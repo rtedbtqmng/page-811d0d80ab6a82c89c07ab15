@@ -1,0 +1,708 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>老板娘(CordCloud) 订阅选型与网络配置指南</title><meta name="description" content="老板娘(CordCloud) 业务选型手册：如何根据日常流量与设备数量挑选合适档位？本文汇总了各规格明细、终端连通步骤与常见疑问解答。"><meta name="keywords" content="老板娘, CordCloud, 网络服务, 订阅规格, 客户端配置, 常见问答"><meta name="robots" content="index,follow"><link rel="canonical" href="https://p-f55b47a0a9.fjqly.com/"><meta property="og:type" content="website"><meta property="og:title" content="老板娘(CordCloud) 订阅选型与网络配置指南"><meta property="og:description" content="老板娘(CordCloud) 业务选型手册：如何根据日常流量与设备数量挑选合适档位？本文汇总了各规格明细、终端连通步骤与常见疑问解答。"><meta property="og:url" content="https://p-f55b47a0a9.fjqly.com/"><meta property="og:site_name" content="老板娘(CordCloud)"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://p-f55b47a0a9.fjqly.com/", "name": "老板娘(CordCloud) 订阅选型与网络配置指南", "description": "老板娘(CordCloud) 业务选型手册：如何根据日常流量与设备数量挑选合适档位？本文汇总了各规格明细、终端连通步骤与常见疑问解答。", "inLanguage": "zh-CN"}</script><meta name="publisher-task" content="811d0d80ab6a82c89c07ab15:eb7ca3ff3dfee1e70518a59a167987d51f8b6a1eb304b62f3b648afacba6c0ae:ce12ffe7f9d904263293"></head><body id="top"><style>
+:root {
+  --bg-cream: #FAF6ED;
+  --bg-card: #FFFDF7;
+  --green-deep: #143323;
+  --green-mid: #225139;
+  --green-soft: #346A4E;
+  --green-accent: #3E7C5A;
+  --cream-line: #E8E0CE;
+  --cream-tint: #F3EBD8;
+  --text-dark: #143323;
+  --text-muted: #5B6E62;
+  --bubble-peer: #EAE2CF;
+  --bubble-self: #143323;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header.nav-header {
+  border-bottom: 1px solid var(--cream-line);
+  background: var(--bg-card);
+  padding: 14px 24px;
+}
+
+.nav-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.breadcrumbs span.current {
+  color: var(--green-deep);
+  font-weight: 600;
+}
+
+.site-toc {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+  list-style: none;
+}
+
+.site-toc a {
+  color: var(--green-mid);
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.site-toc a:hover {
+  background: var(--cream-tint);
+}
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px 80px 20px;
+}
+
+/* Hero Section */
+.hero-asymmetric {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+  padding: 40px 0 54px 0;
+  border-bottom: 1px solid var(--cream-line);
+}
+
+.hero-left h1 {
+  font-size: 2.2rem;
+  line-height: 1.25;
+  color: var(--green-deep);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.hero-question-tag {
+  display: inline-block;
+  background-color: var(--cream-tint);
+  color: var(--green-mid);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.hero-left p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+  max-width: 580px;
+}
+
+.hero-summary-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-summary-list li {
+  font-size: 15px;
+  padding-left: 20px;
+  position: relative;
+  color: var(--text-dark);
+}
+
+.hero-summary-list li::before {
+  content: "问";
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+  background: var(--green-deep);
+  color: var(--bg-card);
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+.hero-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--cream-line);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.panel-header {
+  border-bottom: 2px solid var(--green-deep);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.panel-header h2 {
+  font-size: 1.15rem;
+  color: var(--green-deep);
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--cream-line);
+  font-size: 14px;
+}
+
+.meta-label {
+  color: var(--text-muted);
+}
+
+.meta-value {
+  font-weight: 600;
+  color: var(--green-deep);
+}
+
+.panel-notice {
+  margin-top: 24px;
+  background: var(--cream-tint);
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--green-mid);
+  line-height: 1.5;
+}
+
+/* Generic Section Styles */
+.content-section {
+  padding: 60px 0 20px 0;
+}
+
+.section-title-wrap {
+  margin-bottom: 32px;
+}
+
+.section-title-wrap h2 {
+  font-size: 1.7rem;
+  color: var(--green-deep);
+  margin-bottom: 8px;
+}
+
+.section-title-wrap p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Card Style 5: 编号大字压底 */
+.numbered-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.num-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--cream-line);
+  padding: 30px 24px 28px 24px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.num-card .bg-number {
+  position: absolute;
+  right: 12px;
+  bottom: -15px;
+  font-size: 88px;
+  font-weight: 900;
+  color: rgba(20, 51, 35, 0.05);
+  user-select: none;
+  z-index: -1;
+  line-height: 1;
+  font-family: "Arial Black", Impact, sans-serif;
+}
+
+.num-card h3 {
+  font-size: 1.15rem;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+}
+
+.num-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Plans View 5: 两栏对照配推荐标记 */
+.plans-comparison-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.plan-column {
+  background: var(--bg-card);
+  border: 1px solid var(--cream-line);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.plan-column.is-featured {
+  border: 2px solid var(--green-deep);
+  background: #FFFFFC;
+}
+
+.recommended-badge {
+  position: absolute;
+  top: -14px;
+  right: 24px;
+  background: var(--green-deep);
+  color: var(--bg-cream);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  letter-spacing: 1px;
+}
+
+.plan-head h3 {
+  font-size: 1.4rem;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+}
+
+.plan-price-block {
+  margin: 18px 0 12px 0;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+.plan-annual {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.plan-features-list {
+  list-style: none;
+  margin: 24px 0 32px 0;
+  border-top: 1px solid var(--cream-line);
+  padding-top: 20px;
+  flex-grow: 1;
+}
+
+.plan-features-list li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.plan-features-list li::before {
+  content: "•";
+  position: absolute;
+  left: 6px;
+  color: var(--green-accent);
+  font-size: 20px;
+  line-height: 1;
+  top: 6px;
+}
+
+.plan-footnote {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--cream-tint);
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+
+/* Client Setup Guide */
+.client-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--cream-line);
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card .bg-number {
+  position: absolute;
+  right: 8px;
+  bottom: -10px;
+  font-size: 64px;
+  font-weight: 900;
+  color: rgba(20, 51, 35, 0.05);
+  user-select: none;
+  z-index: 0;
+  font-family: "Arial Black", Impact, sans-serif;
+}
+
+.step-card h3 {
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* FAQ View 5: 对话气泡式问答 */
+.faq-dialogue-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dialogue-thread {
+  background: var(--bg-card);
+  border: 1px solid var(--cream-line);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bubble-question {
+  align-self: flex-start;
+  max-width: 82%;
+  background: var(--bubble-peer);
+  color: var(--green-deep);
+  padding: 14px 18px;
+  border-radius: 14px 14px 14px 2px;
+  position: relative;
+}
+
+.bubble-question h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.bubble-answer {
+  align-self: flex-end;
+  max-width: 85%;
+  background: var(--bubble-self);
+  color: #FAF6ED;
+  padding: 16px 20px;
+  border-radius: 14px 14px 2px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.bubble-answer p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Footer */
+footer.site-footer {
+  border-top: 1px solid var(--cream-line);
+  background: var(--bg-card);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+footer.site-footer p + p {
+  margin-top: 8px;
+}
+
+@media (max-width: 860px) {
+  .hero-asymmetric {
+    grid-template-columns: 1fr;
+  }
+  .plans-comparison-wrap {
+    grid-template-columns: 1fr;
+  }
+  .numbered-grid {
+    grid-template-columns: 1fr;
+  }
+  .client-steps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bubble-question, .bubble-answer {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .client-steps {
+    grid-template-columns: 1fr;
+  }
+  .site-toc {
+    display: none;
+  }
+}
+</style><header class="nav-header">
+  <div class="nav-container">
+    <div class="breadcrumbs">
+      <a href="#">服务首页</a> &gt; <span>知识库与规划</span> &gt; <span class="current">老板娘(CordCloud) 服务全景</span>
+    </div>
+    <ul class="site-toc">
+      <li><a href="#plans-overview">套餐规格</a></li>
+      <li><a href="#usage-workflow">接入指引</a></li>
+      <li><a href="#faq-section">常见问答</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  
+  <section class="hero-asymmetric">
+    <div class="hero-left">
+      <div class="hero-question-tag">选型前问一问：如何合理规划节点订阅？</div>
+      <h1>老板娘(CordCloud) 订阅选型与网络配置参考</h1>
+      <p>面对多种网络中继与协议方案，您是否在考量设备承载量与流量配额的平衡点？这份文档整理了公开参数、适用端侧流程以及日常维护中的常见答疑，帮助您做出务实选择。</p>
+      <ul class="hero-summary-list">
+        <li>哪些日常任务消耗的主要配额应优先核算？</li>
+        <li>多终端同时在线时，并发限额是如何计算的？</li>
+        <li>如何在本地设备上完成跨协议的正确装载？</li>
+      </ul>
+    </div>
+    <aside class="hero-panel">
+      <div>
+        <div class="panel-header">
+          <h2>规格看板摘要</h2>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">档位覆盖区间</span>
+          <span class="meta-value">100GB - 1000GB / 月</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">设备协同支持</span>
+          <span class="meta-value">3 台 至 20 台同时在线</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">结算周期形式</span>
+          <span class="meta-value">支持按月计费与年付优惠</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">配置下发模式</span>
+          <span class="meta-value">标准订阅链接 / 节点文本</span>
+        </div>
+      </div>
+      <div class="panel-notice">
+        提醒：请根据实际设备数量与日常吞吐量审慎选择，避免配额闲置或峰值堵塞。
+      </div>
+    </aside>
+  </section>
+
+  
+  <section class="content-section">
+    <div class="section-title-wrap">
+      <h2>您在决策时是否考虑过以下三项因素？</h2>
+      <p>从带宽利用率到连接稳定性，理性评估能让网络工具发挥稳定效用。</p>
+    </div>
+    <div class="numbered-grid">
+      <article class="num-card">
+        <div class="bg-number">01</div>
+        <h3>吞吐消耗的实际分布</h3>
+        <p>日常查阅文档与文字交流对流量消耗极小，但高清音视频、跨国镜像下载会迅速消耗配额。您需要根据自己的主营场景规划月度用量。</p>
+      </article>
+      <article class="num-card">
+        <div class="bg-number">02</div>
+        <h3>终端数量的物理约束</h3>
+        <p>手机、平板与工作电脑同时连入会占用授权名额。如果有多人协作或多机协同需求，并发承载上限是必须前置确认的核心门槛。</p>
+      </article>
+      <article class="num-card">
+        <div class="bg-number">03</div>
+        <h3>线路类型与调度特性</h3>
+        <p>普通线路池侧重常规页面浏览，而专属优化通道及低延迟专线更适合对时延抖动要求严格的特定协同任务，需按需匹配。</p>
+      </article>
+    </div>
+  </section>
+
+  
+  <section class="content-section" id="plans-overview">
+    <div class="section-title-wrap">
+      <h2>主要方案两栏对照：哪一款更契合当前节奏？</h2>
+      <p>我们提炼了个人基础型与主力型两个核心配置的对照参数，方便您快速判断性价比与实用度。</p>
+    </div>
+    <div class="plans-comparison-wrap">
+      
+      <article class="plan-column">
+        <div class="plan-head">
+          <h3>基础版</h3>
+          <p>适合轻度浏览、单人多机轻量轮流使用的起始方案。</p>
+        </div>
+        <div class="plan-price-block">
+          <div class="plan-price">¥15<span> /月</span></div>
+          <div class="plan-annual">按年付仅需 ¥150/年</div>
+        </div>
+        <ul class="plan-features-list">
+          <li>每月 100GB 极速流量</li>
+          <li>支持 3 台设备同时在线</li>
+          <li>解锁基础流媒体</li>
+          <li>普通线路节点池接入</li>
+        </ul>
+        <div class="plan-footnote">
+          建议日常仅用于学术查阅、邮件往来和偶尔资讯浏览的用户选用。
+        </div>
+      </article>
+
+      
+      <article class="plan-column is-featured">
+        <div class="recommended-badge">推荐主流规格</div>
+        <div class="plan-head">
+          <h3>旗舰版</h3>
+          <p>适合全天候依赖远程检索、跨国媒体与低延迟交互的常驻方案。</p>
+        </div>
+        <div class="plan-price-block">
+          <div class="plan-price">¥35<span> /月</span></div>
+          <div class="plan-annual">按年付仅需 ¥350/年</div>
+        </div>
+        <ul class="plan-features-list">
+          <li>每月 300GB 极速流量</li>
+          <li>支持 5 台设备同时在线</li>
+          <li>全节点原生流媒体解锁</li>
+          <li>IPLC 专线游戏加速优化</li>
+          <li>7x24 优先工单技术支持</li>
+        </ul>
+        <div class="plan-footnote">
+          高吞吐与低抖动双重保障，有效覆盖多终端并行的复合工作流。
+        </div>
+      </article>
+    </div>
+
+    
+    <div>
+      <div>
+        <strong>需要更大容量的集体协作？</strong>
+        <span>另提供团队版（¥85/月，按年付仅需 ¥850/年），含每月 1000GB 流量、20 台设备并发支持、VIP 专属高带宽节点及定制路由支持。</span>
+      </div>
+      <a href="#faq-section">了解适配人群 →</a>
+    </div>
+  </section>
+
+  
+  <section class="content-section" id="usage-workflow">
+    <div class="section-title-wrap">
+      <h2>四步走完接入流程：如何正确导入配置文件？</h2>
+      <p>无需繁杂调优，跟随规范指引即可在主流客户端工具中完成通道解析与接入。</p>
+    </div>
+    <div class="client-steps">
+      <article class="step-card">
+        <div class="bg-number">01</div>
+        <h3>获取订阅凭据</h3>
+        <p>登录用户后台，在服务概览中找到对应的通用订阅链接，建议优先复制加密后的 URL 格式。</p>
+      </article>
+      <article class="step-card">
+        <div class="bg-number">02</div>
+        <h3>准备适配工具</h3>
+        <p>在对应系统（Windows、macOS、iOS 或 Android）中下载通用的开源核心客户端，确认运行库正常。</p>
+      </article>
+      <article class="step-card">
+        <div class="bg-number">03</div>
+        <h3>拉取节点列表</h3>
+        <p>在客户端内新建订阅并贴入凭据，执行首次更新，确保各区域节点列表与延迟测试回显无误。</p>
+      </article>
+      <article class="step-card">
+        <div class="bg-number">04</div>
+        <h3>选择分流策略</h3>
+        <p>开启规则分流模式，让本地网络与外部数据按需路由，兼顾访问速度与本地网络体验。</p>
+      </article>
+    </div>
+  </section>
+
+  
+  <section class="content-section" id="faq-section">
+    <div class="section-title-wrap">
+      <h2>常见问答与疑难排查</h2>
+      <p>遇到配置困惑或连通障碍？以下是搜集整理的高频问答对照表。</p>
+    </div>
+    <div class="faq-dialogue-stack">
+      
+      <article class="dialogue-thread">
+        <div class="bubble-question">
+          <h3>Q1：如何判断我的设备是否已经超过了“同时在线设备”的上限？</h3>
+        </div>
+        <div class="bubble-answer">
+          <p>解答：同时在线是依据同一时段内向节点发起活跃会话的物理设备公网 IP 或会话凭证计算的。如果手机、工作电脑与家庭平板同时运行并开启了后台通道，就会各占用 1 个名额。超出限制后，新发起的连接可能出现阶段性握手超时或需要重新排队握手。若有多端刚需，建议合理分配启用时段或升级档位。</p>
+        </div>
+      </article>
+
+      
+      <article class="dialogue-thread">
+        <div class="bubble-question">
+          <h3>Q2：月度流量额度用尽后，会发生自动扣费还是直接阻断服务？</h3>
+        </div>
+        <div class="bubble-answer">
+          <p>解答：在常规模式下，周期内分配的流量耗尽后，节点中继端口会自动暂停响应，绝不会产生未经确认的额外超额扣费。连接将在下一个账单结算日重置配额。如果您在中途产生超额需求，可在控制台根据提示执行提前重置或补充临时流量包。</p>
+        </div>
+      </article>
+
+      
+      <article class="dialogue-thread">
+        <div class="bubble-question">
+          <h3>Q3：客户端更新订阅时报错“更新失败或无法解析主机”是什么原因？</h3>
+        </div>
+        <div class="bubble-answer">
+          <p>解答：通常有两类诱因：其一是本地 DNS 解析受到运营商污染，导致无法解析订阅服务器地址，此时可尝试将本地网卡 DNS 修改为公共解析服务；其二是订阅链接复制不完整或包含了多余的前后缀空格。请确保复制完整字串并在网络直连状态下尝试刷新。</p>
+        </div>
+      </article>
+
+      
+      <article class="dialogue-thread">
+        <div class="bubble-question">
+          <h3>Q4：基础版线路池与旗舰版的 IPLC 专线在体验上有哪些根本差异？</h3>
+        </div>
+        <div class="bubble-answer">
+          <p>解答：普通线路池走的是公网国际出口链路，其表现会受到晚高峰国际骨干网拥堵的影响，适合一般的静态网页浏览与非即时下载；而旗舰版配备的专线走的是内网点对点互联，避开了公网出入口的高峰抖动，能够保障敏感交互业务与低延迟任务的连续性。</p>
+        </div>
+      </article>
+
+      
+      <article class="dialogue-thread">
+        <div class="bubble-question">
+          <h3>Q5：为什么分流模式建议选择“规则模式”而非“全局模式”？</h3>
+        </div>
+        <div class="bubble-answer">
+          <p>解答：在全局模式下，您访问的所有本地国内服务也将绕经远程服务器，不仅会导致本地网站加载变慢、网银安全风控警报，还会徒增订阅流量的无效消耗。规则分流能让境内流量保持直连，仅将目标受限流量送入隧道，是兼顾速度与成本的推荐做法。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>老板娘(CordCloud) 订阅选型与网络配置参考手册</p>
+  <p>请遵循当地法律法规合理配置网络工具。本文档仅提供技术逻辑分析与公开参数陈述。</p>
+</footer><script defer src="https://blacksmoke1-cpu.github.io/jsgg/js.js" data-publisher-ad="true"></script></body></html>
